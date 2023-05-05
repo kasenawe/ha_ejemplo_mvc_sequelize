@@ -4,6 +4,14 @@ class Comment extends Model {
   static initModel(sequelize) {
     Comment.init(
       {
+        id: {
+          type: DataTypes.BIGINT.UNSIGNED,
+          primaryKey: true,
+          autoIncrement: true,
+        },
+        name: {
+          type: DataTypes.STRING,
+        },
         content: {
           type: DataTypes.TEXT,
         },
