@@ -1,1 +1,9 @@
 /* Colocar aquí CSS "propio" */
+footer {
+  background-color: #2d2d3f;
+  height: 10rem;
+}
+
+body {
+  background: linear-gradient(to bottom, #1f1f27, #1b1b4f);
+}
