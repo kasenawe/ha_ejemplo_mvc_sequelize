@@ -26,7 +26,7 @@ Article.initModel(sequelize);
  */
 
 Article.belongsTo(User);
-User.hasMany(Article, { id: Article });
+User.hasMany(Article);
 
 Comment.belongsTo(Article);
 Article.hasMany(Comment);
