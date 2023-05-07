@@ -23,8 +23,8 @@ async function showHome(req, res) {
   res.render("home", { articles });
 }
 
-async function showContact(req, res) {
-  res.render("contact");
+async function showArticles(req, res) {
+  res.render("articles");
 }
 
 async function showAboutUs(req, res) {
@@ -36,6 +36,6 @@ async function showAboutUs(req, res) {
 
 module.exports = {
   showHome,
-  showContact,
+  showArticles,
   showAboutUs,
 };

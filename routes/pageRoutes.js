@@ -4,6 +4,6 @@ const pageController = require("../controllers/pageController");
 
 router.get("/", pageController.showHome);
 router.get("/sobre-nosotros", pageController.showAboutUs);
-router.get("/contacto", pageController.showContact);
+router.get("/articles", pageController.showArticles);
 
 module.exports = router;

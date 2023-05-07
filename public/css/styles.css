@@ -1,1 +1,17 @@
 /* Colocar aquí CSS "propio" */
+body {
+  background: linear-gradient(to bottom, #1f1f27, #1b1b4f);
+}
+
+#btn-send {
+  background-color: #2d2d3f;
+}
+
+#btn-send:hover {
+  background-color: #4a4a58;
+}
+
+footer {
+  background-color: #2d2d3f;
+  height: 10rem;
+}
