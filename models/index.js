@@ -14,6 +14,7 @@ const sequelize = new Sequelize(
 const User = require("./User");
 const Comment = require("./Comment");
 const Article = require("./Article");
+const { id } = require("date-fns/locale");
 
 User.initModel(sequelize);
 Comment.initModel(sequelize);
@@ -23,6 +24,12 @@ Article.initModel(sequelize);
  * Luego de definir los modelos, se pueden establecer relaciones entre los
  * mismos (usando métodos como belongsTo, hasMany y belongsToMany)...
  */
+
+Article.belongsTo(User);
+User.hasMany(Article, { id: Article });
+
+Comment.belongsTo(Article);
+Article.hasMany(Comment);
 
 module.exports = {
   sequelize,
