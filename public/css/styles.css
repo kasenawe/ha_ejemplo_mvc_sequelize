@@ -2,7 +2,10 @@
 body {
   background: linear-gradient(to bottom, #1f1f27, #1b1b4f);
 }
-
+a {
+  text-decoration: none;
+  color: #1f1f27;
+}
 #btn-send {
   background-color: #2d2d3f;
 }
@@ -14,4 +17,50 @@ body {
 footer {
   background-color: #2d2d3f;
   height: 10rem;
+}
+
+/*      CALENDAR CSS      */
+.calendar {
+  border: 1px solid #ccc;
+  background-color: #fff;
+}
+
+.calendar-header {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.5rem;
+  font-weight: bold;
+}
+
+.calendar-body {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 0.5rem;
+}
+
+.calendar-body .day {
+  width: 14.28%;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+}
+
+.calendar-body .day.today {
+  background-color: #ddd;
+}
+
+.calendar-body .day.grayed-out {
+  color: #ccc;
+}
+
+.calendar-body .day.number {
+  cursor: pointer;
+  background-color: #fff;
+  border: 1px solid #ddd;
+}
+
+.calendar-body .day.number:hover {
+  background-color: #f5f5f5;
 }
