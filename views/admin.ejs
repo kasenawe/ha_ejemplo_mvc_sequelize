@@ -38,7 +38,7 @@
             <% for (const article of articles){ %>
             <tr>
               <td><%= article.id %></td>
-              <td><%= article.title %></td>
+              <td><a href="/<% article.id %>"><%= article.title %></a></td>
               <td><%= article.content %></td>
               <td><%= article.image %></td>
               <td><%= article.createdAt %></td>

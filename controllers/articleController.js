@@ -6,11 +6,19 @@ async function index(req, res) {
   res.render("admin", { articles });
 }
 
-// Display a listing of the resource.
-async function show(req, res) {}
+// // Display a listing of the resource.
+// async function show(req, res) {}
 
 // Display the specified resource.
-async function show(req, res) {}
+async function show(req, res) {
+  const article = await Article.findByPk(req.params.id, {
+    include: ["user", { model: Comment, as: "comments" }],
+  });
+  if (!article) {
+    return res.status(404).send("Article not found");
+  }
+  res.render("articles", { article }); //("articles", {article, comments}) ----> const comments = article.comments;
+}
 
 // Show the form for creating a new resource
 async function create(req, res) {}
