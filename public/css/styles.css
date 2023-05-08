@@ -2,6 +2,9 @@
 body {
   background: linear-gradient(to bottom, #1f1f27, #1b1b4f);
 }
+#logo {
+  max-height: 4rem;
+}
 main {
   margin-top: 5rem;
 }
@@ -19,7 +22,7 @@ a {
 
 footer {
   background-color: #2d2d3f;
-  min-height: 5rem;
+  height: 5rem;
 }
 
 /*      CALENDAR CSS      */
