@@ -23,28 +23,21 @@
         <div class="container border rounded">
           <div class="row">
             <div class="col-md-12 text-white ms-3 mt-3">
-              <h1>Titulo</h1>
+              <h1><%= article.title %></h1>
             </div>
 
             <div class="col-md-8 text-white m-3">
-              <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam similique assumenda
-                alias dignissimos, quod consequatur eius perferendis harum autem porro? Explicabo,
-                ex quam eveniet illum delectus aut incidunt? Doloremque, sequi, alias modi quos
-                voluptates, delectus enim cum porro ratione qui aspernatur laboriosam quas quae
-                voluptatibus eligendi vitae asperiores nihil amet id! Animi facere aliquid
-                praesentium, quo unde commodi nemo, qui doloremque a cum vel excepturi libero
-                incidunt, distinctio dolore deleniti ab magni fugiat totam! Dolorem, in tempore
-                voluptates ratione adipisci quibusdam facere eum fugiat eos temporibus quisquam sit
-                ad mollitia exercitationem labore earum, ea eligendi magnam, molestias dolorum
-                architecto magni.
-              </p>
+              <p><%= article.content %></p>
               <div class="d-flex justify-content-between">
                 <div>
-                  <small class="d-block text-secondary">Autor Autor</small>
-                  <small class="d-block text-secondary">autor@autor.com</small>
+                  <small class="d-block text-secondary"
+                    ><%= article.user.firstname %> <%= article.user.lastname %></small
+                  >
+                  <small class="d-block text-secondary"
+                    ><%= article.user.firstname %><%= article.user.lastname %>@gmail.com</small
+                  >
                 </div>
-                <small class="text-secondary">Fecha</small>
+                <small class="text-secondary"><%= article.createdAt %></small>
               </div>
             </div>
 
@@ -85,22 +78,14 @@
               </form>
 
               <div class="col-md-12 text-white">
-                <h2>Comments(2)</h2>
-                <p>
-                  "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Facere, dolorem quasi.
-                  Cupiditate accusamus quidem incidunt ipsam magnam. Ratione eligendi sint
-                  perspiciatis harum quo id autem accusamus dolorem placeat, quisquam repudiandae?"
-                </p>
-                <small class="text-secondary">Autor Autor</small>
+                <h2>Comments(<%= article.comments.length %>)</h2>
+                <% for (comment of article.comments) { %>
+                <p><%= comment.content %></p>
+                <small class="text-secondary"
+                  ><%= comment.firstname %> <%= comment.lastname %></small
+                >
                 <hr />
-
-                <p>
-                  "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Facere, dolorem quasi.
-                  Cupiditate accusamus quidem incidunt ipsam magnam. Ratione eligendi sint
-                  perspiciatis harum quo id autem accusamus dolorem placeat, quisquam repudiandae?"
-                </p>
-                <small class="text-secondary">Autor Autor</small>
-                <hr />
+                <% } %>
               </div>
             </div>
           </div>

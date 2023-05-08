@@ -40,12 +40,12 @@
               <td><%= article.id %></td>
               <td><%= article.title %></td>
               <td><%= article.content %></td>
-              <td><%= %></td>
+              <td><%= article.image %></td>
               <td><%= article.createdAt %></td>
               <td><%= article.user.firstname %> <%= article.user.lastname %></td>
               <td>
-                <a class="btn btn-primary" href="/usuarios/editar/<%= article.id %>">Editar</a>
-                <a class="btn btn-danger" href="/usuarios/eliminar/<%= article.id %>">Eliminar</a>
+                <a class="btn btn-primary m-1" href="<%= article.id %>/editar">Editar</a>
+                <a class="btn btn-danger m-1" href="/<%= article.id %>">Eliminar</a>
               </td>
             </tr>
             <% } %>
@@ -53,6 +53,15 @@
         </table>
       </div>
     </div>
+    <form action="..." method="post" enctype="multipart/form-data">
+      ...
+      <div class="mb-3">
+        <label for="image" class="form-label">Seleccionar una imagen</label>
+        <input id="image" name="image" type="file" class="form-control" />
+      </div>
+      ...
+    </form>
+
     <%- include("partials/footer") %>
 
     <script
