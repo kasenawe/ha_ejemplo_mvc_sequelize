@@ -23,7 +23,7 @@ async function create(req, res) {
 async function store(req, res) {
   const { firstname, lastname, email, password } = req.body;
   await User.create({ firstname, lastname, email, password });
-  return res.redirect("home");
+  return res.redirect("/");
 }
 
 // Show the form for editing the specified resource.

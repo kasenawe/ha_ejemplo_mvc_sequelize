@@ -34,6 +34,9 @@ module.exports = (app) => {
   app.use("/articulos", articleRoutes);
   app.use("/comentarios", commentRoutes);
   app.use("/", privateRoutes);
+  app.get("*", (re, res) => {
+    res.send("error 404");
+  });
 
   //  app.use("/", publicRoutes); */
   // app.use("/panel", privateRoutes);

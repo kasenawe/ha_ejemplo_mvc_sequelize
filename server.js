@@ -18,26 +18,26 @@ app.listen(APP_PORT, () => {
   console.log(`[Express] Ingresar a http://localhost:${APP_PORT}.\n`);
 });
 
-const session = require("express-session");
-const passport = require("passport");
-const LocalStrategy = require("passport-local");
+// const session = require("express-session");
+// const passport = require("passport");
+// const LocalStrategy = require("passport-local");
 
-app.use(
-  session({
-    secret: "elTeamDePepeGrillo",
-    resave: false,
-    saveUninitialized: false,
-  })
-)
+// app.use(
+//   session({
+//     secret: "elTeamDePepeGrillo",
+//     resave: false,
+//     saveUninitialized: false,
+//   })
+// )
 
-app.use(passport.session());
+// app.use(passport.session());
 
-passport.use(new LocalStrategy ({
-  usernameField: 'email',
-  passwordField: 'password'
-}, async function(username, password, done) {
-  try{
+// passport.use(new LocalStrategy ({
+//   usernameField: 'email',
+//   passwordField: 'password'
+// }, async function(username, password, done) {
+//   try{
 
-  }
-}
-))
+//   }
+// }
+// ))
