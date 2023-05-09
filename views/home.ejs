@@ -56,14 +56,15 @@
       </main>
       <section class="container text-center text-light">
         <% for (const article of articles){ %>
-        <div class="container my-3">
+        <div class="container my-3 w-50">
           <h1 class="text-light m-2"><%= article.title %></h1>
-          <p class="p-4 my-2"><%= article.content.slice(0, 50) %></p>
-          <small
+          <p class="p-4 my-2"><%= article.content.slice(0, 180) %></p>
+          <small class="d-block"
             ><%= article.createdAt.toLocaleString('es-UY', { day: 'numeric', month: 'long', year:
             'numeric', hour: 'numeric', minute: 'numeric' }) %></small
           >
-          <a class="btn btn-outline-info m-1" href="<%= article.id %>">Mostrar Nota</a>
+          <a class="btn btn-outline-info m-1" href="articulos/<%= article.id %>">Mostrar Nota</a>
+          <hr />
         </div>
         <% } %>
       </section>

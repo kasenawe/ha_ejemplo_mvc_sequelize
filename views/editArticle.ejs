@@ -20,48 +20,69 @@
       <%- include("partials/navbar") %>
 
       <main class="d-flex justify-content-center">
-        <div class="container border rounded">
+        <div id="editForm" class="container border rounded w-50">
           <div class="row">
-            <form class="text-white">
-              <div class="mb-3">
-                <label for="exampleInputEmail1" class="form-label">Nombre</label>
-                <input
-                  type="email"
-                  class="form-control"
-                  id="exampleInputEmail1"
-                  aria-describedby="emailHelp"
-                />
-                <label for="exampleInputEmail1" class="form-label">Apellido</label>
-                <input
-                  type="email"
-                  class="form-control"
-                  id="exampleInputEmail1"
-                  aria-describedby="emailHelp"
-                />
-                <label for="exampleInputEmail1" class="form-label">E-mail</label>
-                <input
-                  type="email"
-                  class="form-control"
-                  id="exampleInputEmail1"
-                  aria-describedby="emailHelp"
-                />
-                <label for="exampleInputEmail1" class="form-label">Titulo de la noticia</label>
-                <input
-                  type="email"
-                  class="form-control"
-                  id="exampleInputEmail1"
-                  aria-describedby="emailHelp"
-                />
-                <label for="exampleInputEmail1" class="form-label">Contenido</label>
-                <input
-                  type="email"
-                  class="form-control"
-                  id="exampleInputEmail1"
-                  aria-describedby="emailHelp"
-                />
-              </div>
-              <button type="submit" class="btn btn-primary">Submit</button>
-            </form>
+            <div class="col p-3">
+              <form class="text-white">
+                <div class="mb-3">
+                  <label for="nameInput" class="form-label my-1">Nombre</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="nameInput"
+                    name="nameInput"
+                    value="<%= article.user.firstname %>"
+                    contentInput
+                  />
+                  <label for="lastNameInput" class="form-label my-3">Apellido</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="lastNameInput"
+                    name="lastNameInput"
+                    value="<%= article.user.lastname %>"
+                    contentInput
+                  />
+                  <label for="emailInput" class="form-label my-3">E-mail</label>
+                  <input
+                    type="email"
+                    class="form-control"
+                    id="emailInput"
+                    name="emailInput"
+                    value="<%= article.user.firstname %>@gmail.com"
+                    contentInput
+                  />
+                  <label for="titleInput" class="form-label my-3">Titulo de la noticia</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="titleInput"
+                    name="titleInput"
+                    value="<%= article.title %>"
+                  />
+                  <label for="contentInput" class="form-label my-3">Contenido</label>
+                  <textarea
+                    type="text"
+                    class="form-control"
+                    id="contentInput"
+                    name="contentInput"
+                    cols="25"
+                    rows="10"
+                  >
+<%= article.content %></textarea
+                  >
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+              </form>
+              <form action="" method="post" enctype="multipart/form-data">
+                <div class="mb-3">
+                  <label for="image" class="form-label text-white my-3"
+                    >Seleccionar una imagen</label
+                  >
+                  <input id="image" name="image" type="file" class="form-control" />
+                </div>
+              </form>
+            </div>
           </div>
         </div>
       </main>
