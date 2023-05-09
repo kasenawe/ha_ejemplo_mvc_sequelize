@@ -54,17 +54,18 @@
           </div>
         </div>
       </main>
-
-      <section>
-        <div class="container p-5">
-          <% for (const article of articles){ %>
-          <h2><%= article.title %></h2>
-          <p><%= article.content %></p>
-          <aside><%= article.image %></aside>
-          <span><%= article.createdAt %></span>
-          <!-- <small><%= article.user.firstname %> <%= article.user.lastname %></small> -->
-          <% } %>
+      <section class="container text-center text-light">
+        <% for (const article of articles){ %>
+        <div class="container my-3">
+          <h1 class="text-light m-2"><%= article.title %></h1>
+          <p class="p-4 my-2"><%= article.content.slice(0, 50) %></p>
+          <small
+            ><%= article.createdAt.toLocaleString('es-UY', { day: 'numeric', month: 'long', year:
+            'numeric', hour: 'numeric', minute: 'numeric' }) %></small
+          >
+          <a class="btn btn-outline-info m-1" href="<%= article.id %>">Mostrar Nota</a>
         </div>
+        <% } %>
       </section>
       <%- include("partials/footer") %>
       <script
