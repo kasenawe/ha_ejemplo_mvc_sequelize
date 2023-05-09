@@ -50,16 +50,6 @@ async function store(req, res) {
     console.log(fields);
     res.redirect("/articulos/crear");
   });
-  // const data = req.body;
-  // const newArticle = await Article.create({
-  //   title: data.title,
-  //   content: data.content,
-  // });
-  // const newUser = await User.create({
-  //   firstname: data.firstName,
-  //   lastname: data.lastName,
-  // });
-  // res.redirect("newArticle");
 }
 
 // Show the form for editing the specified resource.
@@ -75,7 +65,39 @@ async function edit(req, res) {
 }
 
 // Update the specified resource in storage.
-async function update(req, res) {}
+async function update(req, res) {
+  const form = formidable({
+    multiples: true,
+    uploadDir: __dirname + "/public/img",
+    keepExtensions: true,
+  });
+  form.parse(req, async (err, fields, files) => {
+    // const lastUserId = await User.max("id");
+    const updateArticle = await Article.update(
+      {
+        title: fields.titleInput,
+        content: fields.contentInput,
+      },
+      {
+        where: { id: articleId },
+      },
+    );
+
+    const updateUser = await User.update(
+      {
+        firstname: fields.nameInput,
+        lastname: fields.lastNameInput,
+        email: fields.emailInput,
+      },
+      {
+        where: { userId: article.userId },
+      },
+    );
+
+    console.log();
+    res.redirect("/articulos");
+  });
+}
 
 // Remove the specified resource from storage.
 async function destroy(req, res) {}
