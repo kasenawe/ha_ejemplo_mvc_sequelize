@@ -1,9 +1,8 @@
-const { Article, Comment, User } = require("../models");
-const formidable = require("formidable");
+const { Article, Comment } = require("../models");
 
 async function index(req, res) {
   const articles = await Article.findAll({ include: "user" });
-  // console.log(articles);
+  console.log(articles);
   res.render("admin", { articles });
 }
 
@@ -22,9 +21,7 @@ async function show(req, res) {
 }
 
 // Show the form for creating a new resource
-async function create(req, res) {
-  res.render("newArticle");
-}
+async function create(req, res) {}
 
 // Store a newly created resource in storage.
 async function store(req, res) {
@@ -60,7 +57,7 @@ async function edit(req, res) {
   if (!article) {
     return res.status(404).send("Article not found");
   }
-  // console.log(article.comments);
+  console.log(article.comments);
   res.render("editArticle", { article }); //("articles", {article, comments}) ----> const comments = article.comments;
 }
 
