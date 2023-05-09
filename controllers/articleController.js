@@ -1,5 +1,5 @@
 const { Article, Comment, User } = require("../models");
-// const formidable = require("formidable");
+const formidable = require("formidable");
 
 async function index(req, res) {
   const articles = await Article.findAll({ include: "user" });
@@ -23,27 +23,32 @@ async function show(req, res) {
 
 // Show the form for creating a new resource
 async function create(req, res) {
-  // res.render("newArticle");
+  res.render("newArticle");
 }
 
 // Store a newly created resource in storage.
 async function store(req, res) {
-  // const form = formidable({
-  //   multiples: true,
-  //   uploadDir: __dirname + "/public/img",
-  //   keepExtensions: true,
-  // });
-  // form.parse(req, (err, fields, files) => {
-  //   const newArticle = Article.create({
-  //     title: fields.title,
-  //     content: fields.content,
-  //   });
-  //   const newUser = User.create({
-  //     firstname: fields.firstName,
-  //     lastname: fields.lastName,
-  //   });
-  //   res.redirect("newArticle");
-  // });
+  const form = formidable({
+    multiples: true,
+    uploadDir: __dirname + "/public/img",
+    keepExtensions: true,
+  });
+  form.parse(req, async (err, fields, files) => {
+    // const lastUserId = await User.max("id");
+    const newArticle = await Article.create({
+      title: fields.title,
+      content: fields.content,
+      // userId: 1,
+    });
+
+    const newUser = await User.create({
+      firstname: fields.firstName,
+      lastname: fields.lastName,
+    });
+
+    console.log(fields);
+    res.redirect("newArticle");
+  });
   // const data = req.body;
   // const newArticle = await Article.create({
   //   title: data.title,
