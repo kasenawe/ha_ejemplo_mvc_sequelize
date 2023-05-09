@@ -1,8 +1,9 @@
-const { Article, Comment } = require("../models");
+const { Article, Comment, User } = require("../models");
+// const formidable = require("formidable");
 
 async function index(req, res) {
   const articles = await Article.findAll({ include: "user" });
-  console.log(articles);
+  // console.log(articles);
   res.render("admin", { articles });
 }
 
@@ -21,10 +22,39 @@ async function show(req, res) {
 }
 
 // Show the form for creating a new resource
-async function create(req, res) {}
+async function create(req, res) {
+  // res.render("newArticle");
+}
 
 // Store a newly created resource in storage.
-async function store(req, res) {}
+async function store(req, res) {
+  // const form = formidable({
+  //   multiples: true,
+  //   uploadDir: __dirname + "/public/img",
+  //   keepExtensions: true,
+  // });
+  // form.parse(req, (err, fields, files) => {
+  //   const newArticle = Article.create({
+  //     title: fields.title,
+  //     content: fields.content,
+  //   });
+  //   const newUser = User.create({
+  //     firstname: fields.firstName,
+  //     lastname: fields.lastName,
+  //   });
+  //   res.redirect("newArticle");
+  // });
+  // const data = req.body;
+  // const newArticle = await Article.create({
+  //   title: data.title,
+  //   content: data.content,
+  // });
+  // const newUser = await User.create({
+  //   firstname: data.firstName,
+  //   lastname: data.lastName,
+  // });
+  // res.redirect("newArticle");
+}
 
 // Show the form for editing the specified resource.
 async function edit(req, res) {
@@ -34,7 +64,7 @@ async function edit(req, res) {
   if (!article) {
     return res.status(404).send("Article not found");
   }
-  console.log(article.comments);
+  // console.log(article.comments);
   res.render("editArticle", { article }); //("articles", {article, comments}) ----> const comments = article.comments;
 }
 
