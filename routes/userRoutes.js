@@ -6,8 +6,13 @@ const userController = require("../controllers/userController");
 // ...
 
 router.get("/", userController.index);
-router.get("/crear", userController.create);
-router.post("/", userController.store);
+
+router.get("/registro", userController.create); //http://localhost:3000/registro
+router.post("/registro", userController.store); //http://localhost:3000/registro.
+router.get("/login", userController.login); // http://localhost:3000/login.
+// router.post("/login", userController.loginPost); // http://localhost:3000/login
+// router.get("/logout", userController.logout); // http://localhost:3000/logout.
+
 router.get("/:id", userController.show);
 router.get("/:id/editar", userController.edit);
 router.patch("/:id", userController.update);
