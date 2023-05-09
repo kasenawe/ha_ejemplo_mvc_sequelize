@@ -1,5 +1,13 @@
 const { User } = require("../models");
 
+async function login(req, res) {
+  return res.render("login");
+}
+
+//async function loginPost(req, res) {}
+
+//async function logout(req, res) {}
+
 // Display a listing of the resource.
 async function index(req, res) {}
 
@@ -7,10 +15,16 @@ async function index(req, res) {}
 async function show(req, res) {}
 
 // Show the form for creating a new resource
-async function create(req, res) {}
+async function create(req, res) {
+  return res.render("registro");
+}
 
 // Store a newly created resource in storage.
-async function store(req, res) {}
+async function store(req, res) {
+  const { firstname, lastname, email, password } = req.body;
+  await User.create({ firstname, lastname, email, password });
+  return res.redirect("home");
+}
 
 // Show the form for editing the specified resource.
 async function edit(req, res) {}
@@ -32,4 +46,7 @@ module.exports = {
   edit,
   update,
   destroy,
+  login,
+  //loginPost,
+  //logout,
 };
