@@ -35,10 +35,11 @@ async function store(req, res) {
   });
   form.parse(req, async (err, fields, files) => {
     // const lastUserId = await User.max("id");
+    const lastUserId = await User.max("id");
     const newArticle = await Article.create({
       title: fields.title,
       content: fields.content,
-      // userId: 1,
+      userId: lastUserId,
     });
 
     const newUser = await User.create({
@@ -47,7 +48,7 @@ async function store(req, res) {
     });
 
     console.log(fields);
-    res.redirect("newArticle");
+    res.redirect("/articulos/crear");
   });
   // const data = req.body;
   // const newArticle = await Article.create({

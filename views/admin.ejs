@@ -38,7 +38,13 @@
             <% for (const article of articles){ %>
             <tr>
               <td><%= article.id %></td>
-              <td><a href="/articulos/<%= article.id %>"><%= article.title %></a></td>
+              <td>
+                <a
+                  class="text-white fw-bold text-decoration-none"
+                  href="/articulos/<%= article.id %>"
+                  ><%= article.title %></a
+                >
+              </td>
               <td><%= article.content.slice(0, 120) %></td>
               <td><%= article.image %></td>
               <td><%= article.createdAt.toLocaleString() %></td>
