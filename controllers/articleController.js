@@ -24,7 +24,40 @@ async function show(req, res) {
 async function create(req, res) {}
 
 // Store a newly created resource in storage.
-async function store(req, res) {}
+async function store(req, res) {
+  const form = formidable({
+    multiples: true,
+    uploadDir: __dirname + "/public/img",
+    keepExtensions: true,
+  });
+  form.parse(req, async (err, fields, files) => {
+    // const lastUserId = await User.max("id");
+    const lastUserId = await User.max("id");
+    const newArticle = await Article.create({
+      title: fields.title,
+      content: fields.content,
+      userId: lastUserId,
+    });
+
+    const newUser = await User.create({
+      firstname: fields.firstName,
+      lastname: fields.lastName,
+    });
+
+    console.log(fields);
+    res.redirect("/articulos/crear");
+  });
+  // const data = req.body;
+  // const newArticle = await Article.create({
+  //   title: data.title,
+  //   content: data.content,
+  // });
+  // const newUser = await User.create({
+  //   firstname: data.firstName,
+  //   lastname: data.lastName,
+  // });
+  // res.redirect("newArticle");
+}
 
 // Show the form for editing the specified resource.
 async function edit(req, res) {
