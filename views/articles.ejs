@@ -20,7 +20,7 @@
       <%- include("partials/navbar") %>
 
       <main class="d-flex justify-content-center">
-        <div class="container border rounded">
+        <div id="articleContainer" class="container border rounded w-75">
           <div class="row">
             <div class="col-md-12 text-white ms-3 mt-3">
               <h1><%= article.title %></h1>
@@ -45,23 +45,21 @@
               <img src="" alt="" />
             </div>
 
-            <div class="col-md-12 m-3 mt-0">
-              <a href="" class="btn btn-light my-2">Ir a la nota</a>
-            </div>
             <hr class="text-white" />
 
             <div class="col-md-12">
               <h2 class="text-white fs-4">Add your comment</h2>
 
-              <form action="">
+              <form class="form-control" action="" method="post">
                 <div class="form-floating my-2">
-                  <textarea
+                  <input
+                    type="text"
                     class="form-control"
-                    placeholder="Leave a comment here"
+                    placeholder="Your name here"
                     id="name"
                     name="name"
-                  ></textarea>
-                  <label for="name">Name</label>
+                  />
+                  <label for="name">Your name here</label>
                 </div>
 
                 <div class="form-floating my-2">
@@ -70,17 +68,17 @@
                     placeholder="Leave a comment here"
                     id="comment"
                     name="comment"
-                    style="height: 100px"
+                    style="height: 150px"
                   ></textarea>
-                  <label for="comment">Comments</label>
+                  <label for="comment">Leave your comment</label>
                 </div>
                 <button id="btn-send" class="btn text-white w-100">Send</button>
               </form>
 
               <div class="col-md-12 text-white mb-5">
-                <h2>Comments(<%= article.comments.length %>)</h2>
+                <h5 class="mb-5 text-light">Comments(<%= article.comments.length %>)</h5>
                 <% for (comment of article.comments) { %>
-                <p><%= comment.content %></p>
+                <p class="my-2"><%= comment.content %></p>
                 <small class="text-secondary"
                   ><%= comment.firstname %> <%= comment.lastname %></small
                 >
