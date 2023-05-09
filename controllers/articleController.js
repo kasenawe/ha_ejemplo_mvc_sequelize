@@ -17,7 +17,7 @@ async function show(req, res) {
   if (!article) {
     return res.status(404).send("Article not found");
   }
-  res.render("articles", { article }); //("articles", {article, comments}) ----> const comments = article.comments;
+  return res.render("articles", { article });
 }
 
 // Show the form for creating a new resource
@@ -35,7 +35,7 @@ async function edit(req, res) {
     return res.status(404).send("Article not found");
   }
   console.log(article.comments);
-  res.render("articles", { article }); //("articles", {article, comments}) ----> const comments = article.comments;
+  res.render("editArticle", { article }); //("articles", {article, comments}) ----> const comments = article.comments;
 }
 
 // Update the specified resource in storage.
