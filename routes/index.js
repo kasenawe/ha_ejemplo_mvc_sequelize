@@ -8,6 +8,7 @@ const articleRoutes = require("./articleRoutes");
 const commentRoutes = require("./commentRoutes");
 const privateRoutes = require("./privateRoutes");
 const pageRoutes = require("./pageRoutes");
+const authRoutes = require("./authRoutes");
 
 /**
  * Otra alternativa podría ser organizar las rutas según su nivel de
@@ -34,7 +35,7 @@ module.exports = (app) => {
   app.use("/articulos", articleRoutes);
   app.use("/comentarios", commentRoutes);
   app.use("/", privateRoutes);
-  app.get("*", (re, res) => {
+  app.get("*", (req, res) => {
     res.send("error 404");
   });
 

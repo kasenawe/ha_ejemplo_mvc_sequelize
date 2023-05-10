@@ -1,4 +1,5 @@
 const { User } = require("../models");
+const bcrypt = require("bcryptjs");
 
 async function login(req, res) {
   return res.render("login");
@@ -22,7 +23,8 @@ async function create(req, res) {
 // Store a newly created resource in storage.
 async function store(req, res) {
   const { firstname, lastname, email, password } = req.body;
-  await User.create({ firstname, lastname, email, password });
+  const passwordHasheada = await bcrypt.hash(password, 10);
+  await User.create({ firstname, lastname, email, password: passwordHasheada });
   return res.redirect("/");
 }
 
