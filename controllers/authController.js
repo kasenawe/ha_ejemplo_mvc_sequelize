@@ -1,4 +1,4 @@
-const passport = require("./config/passport");
+const passport = require("../config/passport");
 
 function login(req, res) {
   passport.authenticate("local", {
@@ -7,4 +7,4 @@ function login(req, res) {
   });
 }
 
-modile.exports = { login };
+module.exports = { login };

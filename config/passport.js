@@ -20,6 +20,20 @@ function passportConfig() {
       },
     ),
   );
+
+  passport.serializeUser(function (user, done) {
+    done(null, user.id);
+  });
+
+  passport.deserializeUser(function (id, done) {
+    User.findByPk(id)
+      .then((user) => {
+        done(null, user);
+      })
+      .catch(() => {
+        done(error, user);
+      });
+  });
 }
 
 module.exports = passportConfig;
