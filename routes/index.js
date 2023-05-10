@@ -33,11 +33,11 @@ module.exports = (app) => {
   app.use("/", userRoutes);
   app.use("/articulos", articleRoutes);
   app.use("/comentarios", commentRoutes);
-  app.use("/", privateRoutes);
+  app.use("/panel", privateRoutes);
   app.get("*", (req, res) => {
     res.send("error 404");
   });
 
-  //  app.use("/", publicRoutes); */
+  //  app.use("/", publicRoutes);
   // app.use("/panel", privateRoutes);
 };
