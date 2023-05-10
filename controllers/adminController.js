@@ -1,7 +1,8 @@
-// const { Article } = require("../models");
+const { Article } = require("../models");
 
-// async function index(req, res) {
-//     const articles = await Article.findAll({ include: "user" });
-//     console.log(articles);
-//     res.render("admin", { articles });
-//   }
+async function admin(req, res) {
+  const articles = await Article.findAll({ include: "user" });
+  res.render("admin", { articles });
+}
+
+module.exports = admin;

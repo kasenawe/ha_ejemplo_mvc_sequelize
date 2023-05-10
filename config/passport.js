@@ -1,6 +1,7 @@
-const session = require("express-session");
 const passport = require("passport");
 const LocalStrategy = require("passport-local");
+const { User } = require("../models");
+const bcrypt = require("bcryptjs");
 
 function passportConfig() {
   passport.use(
@@ -9,14 +10,17 @@ function passportConfig() {
         usernameField: "email",
       },
       async function (email, password, done) {
-        const user = await User.findOne({ where: { email: email } });
+        const user = await User.findOne({ where: { email } });
         if (!user) {
-          done(null, false, { message: "credenciales incorrectas" });
+          console.log("no encontro el usuario");
+          return done(null, false, { message: "credenciales incorrectas" });
         }
         if (!(await bcrypt.compare(password, user.password))) {
-          done(null, false, { message: "credenciales incorrectas" });
+          console.log("la contrasena estaba mal");
+          return done(null, false, { message: "credenciales incorrectas" });
         }
-        done(null, user);
+        console.log("nos deja pasar");
+        return done(null, user);
       },
     ),
   );
@@ -36,4 +40,4 @@ function passportConfig() {
   });
 }
 
-module.exports = passportConfig;
+module.exports = { passportConfig, passport };

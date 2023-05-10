@@ -1,11 +1,5 @@
 const { Article, Comment } = require("../models");
 
-async function index(req, res) {
-  const articles = await Article.findAll({ include: "user" });
-  //console.log(articles);
-  res.render("admin", { articles });
-}
-
 // // Display a listing of the resource.
 // async function show(req, res) {}
 
@@ -103,7 +97,6 @@ async function destroy(req, res) {}
 // ...
 
 module.exports = {
-  index,
   show,
   create,
   store,
