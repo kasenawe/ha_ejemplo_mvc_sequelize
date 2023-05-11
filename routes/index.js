@@ -30,10 +30,10 @@ module.exports = (app) => {
    * en inglés.
    */
   app.use("/", pageRoutes);
-  app.use("/", userRoutes);
+  app.use("/usuarios", userRoutes);
   app.use("/articulos", articleRoutes);
   app.use("/comentarios", commentRoutes);
-  app.use("/panel", privateRoutes);
+  app.use("/admin", privateRoutes);
   app.get("*", (req, res) => {
     res.send("error 404");
   });

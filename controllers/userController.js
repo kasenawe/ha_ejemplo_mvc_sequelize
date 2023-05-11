@@ -1,10 +1,6 @@
 const { User } = require("../models");
 const bcrypt = require("bcryptjs");
 
-async function login(req, res) {
-  return res.render("login");
-}
-
 //async function loginPost(req, res) {}
 
 //async function logout(req, res) {}
@@ -20,7 +16,6 @@ async function create(req, res) {
   return res.render("registro");
 }
 
-// Store a newly created resource in storage.
 async function store(req, res) {
   const { firstname, lastname, email, password } = req.body;
   const passwordHasheada = await bcrypt.hash(password, 10);
@@ -48,7 +43,7 @@ module.exports = {
   edit,
   update,
   destroy,
-  login,
+  //login,
   //loginPost,
   //logout,
 };

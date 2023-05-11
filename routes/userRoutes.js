@@ -14,17 +14,11 @@ router.get("/", userController.index);
 
 router.get("/registro", userController.create); //http://localhost:3000/registro
 router.post("/registro", userController.store); //http://localhost:3000/registro.
-router.get("/login", userController.login); // http://localhost:3000/login.
-router.post(
-  "/login",
-  passport.authenticate("local", {
-    successRedirect: "/panel/admin",
-    failureRedirect: "/",
-  }),
-); // http://localhost:3000/login
+
 router.get("/logout", pageController.logout); // http://localhost:3000/logout.
 
 router.get("/welcome", ensureAuthenticated, function (req, res) {
+  //if (ensureAuthenticated)
   return res.send("untexto");
 });
 

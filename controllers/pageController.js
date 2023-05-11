@@ -35,10 +35,9 @@ async function showArticles(req, res) {
 async function showAboutUs(req, res) {
   res.render("aboutUs");
 }
-
-// Otros handlers...
-// ...
-async function login(req, res) {}
+async function login(req, res) {
+  return res.render("login");
+}
 
 async function loginPost(req, res) {}
 
