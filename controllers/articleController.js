@@ -1,4 +1,5 @@
-const { Article, Comment } = require("../models");
+const { Article, User, Comment } = require("../models");
+const formidable = require("formidable");
 
 // // Display a listing of the resource.
 // async function show(req, res) {}
@@ -64,6 +65,7 @@ async function update(req, res) {
   });
   form.parse(req, async (err, fields, files) => {
     // const lastUserId = await User.max("id");
+    const articleId = req.params.id;
     const updateArticle = await Article.update(
       {
         title: fields.titleInput,
@@ -73,7 +75,7 @@ async function update(req, res) {
         where: { id: articleId },
       },
     );
-
+    /*
     const updateUser = await User.update(
       {
         firstname: fields.nameInput,
@@ -81,12 +83,12 @@ async function update(req, res) {
         email: fields.emailInput,
       },
       {
-        where: { userId: article.userId },
+        where: { userId: ar/editarticle.userId },
       },
-    );
-
+    );/editar
+*/
     //console.log();
-    res.redirect("/articulos");
+    res.redirect("/admin");
   });
 }
 

@@ -22,9 +22,9 @@ router.get("/welcome", ensureAuthenticated, function (req, res) {
   return res.send("untexto");
 });
 
-router.get("/:id", userController.show);
-router.get("/:id/editar", userController.edit);
-router.patch("/:id", userController.update);
-router.delete("/:id", userController.destroy);
+// router.get("/:id", userController.show);
+// router.get("/:id/editar", userController.edit);
+// router.patch("/:id", userController.update);
+// router.delete("/:id", userController.destroy);
 
 module.exports = router;
