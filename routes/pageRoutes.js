@@ -12,6 +12,16 @@ router.post(
     failureRedirect: "/login",
   }),
 ); // http://localhost:3000/login
+
+router.post("/logout", function (req, res, next) {
+  req.logout(function (err) {
+    if (err) {
+      return next(err);
+    }
+    res.redirect("/");
+  });
+});
+
 //router.get("/sobre-nosotros", pageController.showAboutUs);
 //router.get("/articles", pageController.showArticles);
 

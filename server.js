@@ -25,6 +25,15 @@ app.use(
 );
 app.use(passport.session());
 app.use(isAuthenticated);
+app.post("/logout", function (req, res, next) {
+  req.logout(function (err) {
+    if (err) {
+      console.log(req.user);
+      return next(err);
+    }
+    res.redirect("/");
+  });
+});
 
 passportConfig();
 
