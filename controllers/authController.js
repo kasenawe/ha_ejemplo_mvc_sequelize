@@ -4,8 +4,16 @@ function login(req, res) {
   console.log("entro a login");
   passport.authenticate("local", {
     successRedirect: "/admin",
-    failureRedirect: "/",
-  });
+    failureRedirect: "/login",
+    failureFlash: {
+      type: "failureFlash",
+      message: "Credenciales incorrectas",
+    },
+    successFlash: {
+      type: "successFlash",
+      message: "Las credenciales han ido validadas",
+    },
+  })(req, res);
 }
 
 module.exports = { login };

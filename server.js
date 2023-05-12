@@ -3,9 +3,11 @@ require("dotenv").config();
 const methodOverride = require("method-override");
 const express = require("express");
 const session = require("express-session");
+const flash = require("connect-flash");
 
 const { passportConfig, passport } = require("./config/passport");
 const isAuthenticated = require("./routes/middleware/isAuthenticated");
+const middleFlash = require("./routes/middleware/middleFlash");
 const routes = require("./routes");
 
 const APP_PORT = process.env.APP_PORT || 3000;
@@ -25,15 +27,8 @@ app.use(
 );
 app.use(passport.session());
 app.use(isAuthenticated);
-app.post("/logout", function (req, res, next) {
-  req.logout(function (err) {
-    if (err) {
-      console.log(req.user);
-      return next(err);
-    }
-    res.redirect("/");
-  });
-});
+app.use(flash());
+app.use(middleFlash);
 
 passportConfig();
 
