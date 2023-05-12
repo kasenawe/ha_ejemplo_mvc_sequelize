@@ -5,6 +5,7 @@ const express = require("express");
 const session = require("express-session");
 
 const { passportConfig, passport } = require("./config/passport");
+const isAuthenticated = require("./routes/middleware/isAuthenticated");
 const routes = require("./routes");
 
 const APP_PORT = process.env.APP_PORT || 3000;
@@ -23,6 +24,8 @@ app.use(
   }),
 );
 app.use(passport.session());
+app.use(isAuthenticated);
+
 passportConfig();
 
 routes(app);

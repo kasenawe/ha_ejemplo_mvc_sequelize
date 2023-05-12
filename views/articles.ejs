@@ -46,7 +46,7 @@
             </div>
 
             <hr class="text-white" />
-
+            <%if (login) {%>
             <div class="col-md-12">
               <h4 class="text-white fs-6">Add your comment</h4>
 
@@ -74,7 +74,9 @@
                 </div>
                 <button id="btn-send" class="btn text-white w-100">Send</button>
               </form>
-
+              <%} else {%>
+              <p>prueba prueba</p>
+              <%}%>
               <div class="col-md-12 text-white mb-5">
                 <h5 class="mb-5 mt-2 text-light opacity-75 fs-6">
                   Comments(<%= article.comments.length %>)

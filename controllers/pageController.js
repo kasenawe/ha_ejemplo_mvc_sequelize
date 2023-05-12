@@ -24,9 +24,15 @@ async function showHome(req, res) {
 }
 
 async function admin(req, res) {
+  const articles = await Article.findAll({ include: "user", where: { userId: req.user.id } });
+  res.render("admin", { articles });
+}
+/*
+async function admin(req, res) {
   const articles = await Article.findAll({ include: "user" });
   res.render("admin", { articles });
 }
+*/
 
 async function showArticles(req, res) {
   res.render("articles");
